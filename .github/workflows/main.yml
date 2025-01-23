@@ -21,7 +21,7 @@ jobs:
     - name: Install kubectl
       uses: azure/setup-kubectl@v2.0
       with:
-        version: 'v1.27.0' # default is latest stable
+        version: 'v1.31.0' # default is latest stable
       id: install
 
     - name: Configure AWS Credentials
@@ -38,7 +38,7 @@ jobs:
     - name: Build, tag, and push docker image to Amazon ECR
       env:
         REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        REPOSITORY: devopshint
+        REPOSITORY: mydemorepo
         IMAGE_TAG: latest
       run: |
         docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
